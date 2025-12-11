@@ -1,0 +1,447 @@
+:root {
+    --color-bg: #333333;
+    --color-texto: #FFFFFF;
+    --color-header: #228B22;
+    --color-acento: #2ecc71;
+    --color-acento-oscuro: #1f8a3c;
+    --color-seccion-alterna: #2b2b2b;
+    --color-borde-suave: rgba(255, 255, 255, 0.1);
+
+    --max-width: 1200px;
+    --shadow-suave: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* Enlaces */
+a { 
+    text-decoration: none;
+}
+
+/* Header y navegación */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--color-header);
+    display: flex;
+    
+    justify-content: space-between;
+    padding: 0.80rem 1.25rem;
+    
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+/* Navegación */
+.nav-principal ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-principal a {
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.nav-principal a:hover,
+.nav-principal a:focus {
+    background-color: rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Botón (móvil) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle-bar {
+    width: 24px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 999px;
+}
+
+/* Layout general */
+.seccion {
+    padding: 4rem 1.5rem;
+}
+
+.seccion-alterna {
+    background-color: var(--color-seccion-alterna);
+}
+
+.seccion-sub {
+    margin-top: 3rem;
+}
+
+.contenedor {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    background: #222 url("Playa en Fajardo.jpeg") center/cover no-repeat fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.3)
+    );
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.hero-nota {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primario {
+    background-color: var(--color-acento);
+    color: #000;
+    box-shadow: var(--shadow-suave);
+}
+
+.btn-primario:hover,
+.btn-primario:focus {
+    background-color: var(--color-acento-oscuro);
+    border-color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Destinos */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border-radius: 999px;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0.35rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.filter-btn.activo,
+.filter-btn:hover,
+.filter-btn:focus {
+    background-color: var(--color-acento);
+    color: #000;
+    transform: translateY(-1px);
+}
+
+.grid-destinos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.destino-card {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-suave);
+    border: 1px solid var(--color-borde-suave);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.destino-card figure {
+    margin: 0;
+    max-height: 275px;
+    overflow: hidden;
+}
+
+.destino-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.destino-card:hover img {
+    transform: scale(1.05);
+}
+
+
+.destino-card p {
+    margin: 0 0.8rem 0.6rem;
+    font-size: 0.95rem;
+}
+/* Image map */
+.image-map-contenedor {
+    max-width: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-suave);
+	
+}
+
+.image-map-contenedor img {
+    display: block;
+    width: 100%;
+}
+
+/* Servicios */
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.servicio-card {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+    padding: 1.25rem;
+    border: 1px solid var(--color-borde-suave);
+    box-shadow: var(--shadow-suave);
+}
+/* Caja de recordatorio responsable */
+.advocacy-box {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    border-radius: 14px;
+    border: 1px dashed var(--color-acento);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Mapa (iframe) */
+.mapa-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+}
+
+.lista-simple {
+    margin-left: 1.4rem;
+}
+
+.mapa-iframe-contenedor {
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.mapa-iframe-contenedor iframe {
+    width: 100%;
+    min-height: 300px; 
+    border: none;
+}
+
+/* Contacto */
+.contacto-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.campo-form input,
+.campo-form select,
+.campo-form textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #fff;
+    
+}
+
+.campo-form input:focus,
+.campo-form select:focus,
+.campo-form textarea:focus {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 1px;
+}
+
+.contacto-info {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid var(--color-borde-suave);
+    box-shadow: var(--shadow-suave);
+    font-size: 0.95rem;
+}
+
+/* Botón volver arriba */
+.btn-arriba {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--color-acento);
+    color: #000;
+    font-size: 1.3rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-suave);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 40;
+}
+
+.btn-arriba.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Footer */
+.main-footer {
+    background-color: #222;
+    padding: 1.5rem 1.5rem 2rem;
+    border-top: 1px solid #111;
+}
+
+.footer-contenido {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    text-align: center;
+    
+}
+
+/* Guías por destino */
+.guia-destino {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #555555;
+}
+
+.guia-destino h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.guia-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.guia-mapa {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    background-color: #000000;
+}
+
+.guia-mapa iframe {
+    width: 100%;
+    min-height: 300px; 
+    border: none;
+}
+/* ---- MENÚ HAMBURGUESA ---- */
+
+/* Estilos del botón */
+.hamburger {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* en desktop no se ve */
+    color: #333;
+}
+
+/* Versión móvil */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;  /* aparece en móvil */
+    }
+
+    nav {
+        display: none;   /* se oculta el menú por defecto */
+        flex-direction: column;
+        gap: 10px;
+        background: #333333;  /* <-- FONDO CAMBIADO */
+        padding: 10px;
+    }
+
+    nav a {
+        color: white; /* <-- Para que se vea bien sobre fondo oscuro */
+    }
+
+    nav.active {
+        display: flex;  /* se muestra al abrir */
+    }
+}
